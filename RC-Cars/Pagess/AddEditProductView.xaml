@@ -1,0 +1,79 @@
+﻿<Page x:Class="RC_Cars.Pagess.AddEditProductView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RC_Cars.Pagess"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddEditProductView">
+
+    <Page.Resources>
+        <!-- TextBox Style -->
+        <Style x:Key="textBoxStyle" TargetType="TextBox">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Width" Value="300"/>
+        </Style>
+
+        <!-- Button Style -->
+        <Style x:Key="btnStyle" TargetType="Button">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Width" Value="140"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Gray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#F0F0F0">
+        <Border Background="White" Padding="20" CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Width="400">
+                <TextBlock Text="Название" FontSize="15" HorizontalAlignment="Left" Margin="10,0"/>
+                <TextBox x:Name="tbNameProduct" Style="{StaticResource textBoxStyle}" Text="{Binding Name}" MaxLength="50"/>
+
+                <TextBlock Text="Цена" FontSize="15" HorizontalAlignment="Left" Margin="10,0"/>
+                <TextBox x:Name="tbPriceProduct" Style="{StaticResource textBoxStyle}" Text="{Binding Price}"/>
+
+                <TextBlock Text="Остаток" FontSize="15" HorizontalAlignment="Left" Margin="10,0"/>
+                <TextBox x:Name="tbCountProduct" Style="{StaticResource textBoxStyle}" Text="{Binding Count}"/>
+
+                <!--<TextBlock Text="Количество продаж" FontSize="15" HorizontalAlignment="Left" Margin="10,0"/>
+                <TextBox x:Name="tbSalesProduct" Style="{StaticResource textBoxStyle}" Text="{Binding Sales}" PreviewTextInput="tbSalesProduct_PreviewTextInput"/>-->
+
+                <TextBlock Text="Масштаб машинки" FontSize="15" HorizontalAlignment="Left" Margin="10,0" ToolTip="Масштаб указывается в формате x/x или x/xx"/>
+                <TextBox x:Name="tbModelCar" Style="{StaticResource textBoxStyle}" Text="{Binding Model_Car}" MaxLength="5"/>
+
+                <TextBlock Text="Вид машинки" FontSize="15" HorizontalAlignment="Left" Margin="10,0"/>
+                <ComboBox Name="cmbxTypeOfCar" SelectedItem="{Binding TypeOfCar.NameType}" DisplayMemberPath="NameType" Width="300" Margin="10" Padding="10,5" FontSize="14"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20,10,20,0">
+                    <Button Content="Сохранить" Name="btnSave" Click="btnSave_Click" Style="{StaticResource btnStyle}"/>
+                    <Button Content="Назад" Name="btnBack" Click="btnBack_Click" Style="{StaticResource btnStyle}"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
